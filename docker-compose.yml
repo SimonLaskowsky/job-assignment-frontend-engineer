@@ -1,7 +1,7 @@
-version: "3.9"
 services:
   api:
     image: kalambagames/job-assignment-backend
+    platform: linux/amd64 # obraz zbudowany pod amd64; na Apple Silicon (arm64) uruchamiany przez emulację
     command: [ "/app/wait-for", "db:3306", "--", "npm", "run", "start" ]
     restart: always
     environment:
@@ -12,6 +12,7 @@ services:
       - db
   db:
     image: mysql:8.0.25
+    platform: linux/amd64 # mysql:8.0.25 nie ma wariantu arm64 — wymuszamy amd64 (emulacja na Apple Silicon)
     cap_add:
       - SYS_NICE # fixes "mbind: Operation not permitted"
     command: --default-authentication-plugin=mysql_native_password
