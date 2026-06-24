@@ -63,3 +63,22 @@ export interface Article {
   favoritesCount: number;
   author: Author;
 }
+
+/* ------------------------------------------------------------------ *
+ * Kontrakty API (request/response).
+ * API Conduit "owija" dane w obiekt z jednym kluczem (np. { user: ... }),
+ * dlatego typy odpowiedzi to nie samo `User`, tylko koperta `{ user: User }`.
+ * ------------------------------------------------------------------ */
+
+/** Odpowiedź zwracana przez /users/login, /users, /user — opakowany `User`. */
+export interface UserResponse {
+  user: User;
+}
+
+/** Body żądania logowania: POST /users/login oczekuje { user: { email, password } }. */
+export interface LoginUserRequest {
+  user: {
+    email: string;
+    password: string;
+  };
+}
