@@ -1,29 +1,27 @@
-import React from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
-import Article from "./Article";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
 import ArticleList from "./ArticleList";
-import Editor from "./Editor";
-import LoginRegister from "./LoginRegister";
-import Logout from "./Logout";
+import Article from "./Article";
 import Profile from "./Profile";
-import Settings from "./Settings";
+import LoginRegister from "./LoginRegister";
 
 function App() {
   return (
     <Router>
+      {/* Navbar i Footer są POZA <Switch> — wspólny layout renderowany na każdej
+          podstronie. Wewnątrz <Switch> zmienia się tylko środek, zależnie od trasy. */}
+      <Navbar />
       <Switch>
-        <Route path="/editor" exact component={Editor} />
-        <Route path="/editor/:slug" exact component={Editor} />
-        <Route path="/login" exact component={LoginRegister} />
-        <Route path="/logout" exact component={Logout} />
+        {/* `exact` na "/", żeby strona główna nie "łapała" wszystkich innych ścieżek. */}
+        <Route path="/" exact component={ArticleList} />
+        <Route path="/article/:slug" exact component={Article} />
         <Route path="/profile/:username" exact component={Profile} />
-        <Route path="/profile/:username/favorites" exact component={Profile} />
-        <Route path="/register" exact component={LoginRegister} />
-        <Route path="/settings" exact component={Settings} />
-        <Route path="/:slug" exact component={Article} />
-        <Route path="/" component={ArticleList} />
+        <Route path="/login" exact component={LoginRegister} />
       </Switch>
+      <Footer />
     </Router>
   );
 }
