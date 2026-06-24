@@ -82,3 +82,13 @@ export interface LoginUserRequest {
     password: string;
   };
 }
+
+/**
+ * Standardowy format błędu walidacji z API (status 422). Komunikaty siedzą
+ * w tablicy `errors.body`, np. { errors: { body: ["email or password is invalid"] } }.
+ */
+export interface GenericErrorModel {
+  errors: {
+    body: string[];
+  };
+}

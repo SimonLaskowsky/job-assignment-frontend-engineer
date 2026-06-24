@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import ArticleList from "./ArticleList";
 import Article from "./Article";
 import Profile from "./Profile";
-import LoginRegister from "./LoginRegister";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <Route path="/" exact component={ArticleList} />
         <Route path="/article/:slug" exact component={Article} />
         <Route path="/profile/:username" exact component={Profile} />
-        <Route path="/login" exact component={LoginRegister} />
+        <Route path="/login" exact component={Login} />
       </Switch>
       <Footer />
     </Router>
