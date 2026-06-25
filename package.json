@@ -48,6 +48,9 @@
     "lint-staged": "11.2.3",
     "prettier": "2.4.1"
   },
+  "resolutions": {
+    "babel-preset-current-node-syntax": "1.0.1"
+  },
   "browserslist": {
     "production": [
       ">0.2%",
