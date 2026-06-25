@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import client from "../api/client";
 import AuthorImage from "../components/AuthorImage";
 import ArticlePreview from "../components/ArticlePreview";
+import FollowButton from "../components/FollowButton";
 import type { Article, Profile as ProfileType, ProfileResponse, MultipleArticlesResponse } from "../types/api";
 
 export default function Profile() {
@@ -62,11 +63,7 @@ export default function Profile() {
               <h4>{profile.username}</h4>
               {/* bio bywa puste -> renderujemy <p> tylko, gdy faktycznie coś jest. */}
               {profile.bio && <p>{profile.bio}</p>}
-              {/* TODO (Etap 5): podpiąć Follow -> POST/DELETE /profiles/{username}/follow. */}
-              <button type="button" className="btn btn-sm btn-outline-secondary action-btn">
-                <i className="ion-plus-round" />
-                &nbsp; Follow {profile.username}
-              </button>
+              <FollowButton username={profile.username} following={profile.following} />
             </div>
           </div>
         </div>

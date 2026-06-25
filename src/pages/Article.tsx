@@ -5,6 +5,8 @@ import dayjs from "dayjs";
 
 import client from "../api/client";
 import AuthorImage from "../components/AuthorImage";
+import FavoriteButton from "../components/FavoriteButton";
+import FollowButton from "../components/FollowButton";
 import type { Article as ArticleType, SingleArticleResponse } from "../types/api";
 
 /**
@@ -24,20 +26,9 @@ function ArticleMeta({ article }: { article: ArticleType }) {
         </Link>
         <span className="date">{dayjs(article.createdAt).format("MMMM D, YYYY")}</span>
       </div>
-      {/* TODO (Etap 5): podpiąć Follow -> POST/DELETE /profiles/{username}/follow. */}
-      <button type="button" className="btn btn-sm btn-outline-secondary">
-        <i className="ion-plus-round" />
-        &nbsp; Follow {article.author.username}
-      </button>
+      <FollowButton username={article.author.username} following={article.author.following} />
       &nbsp;&nbsp;
-      {/* TODO (Etap 5): podpiąć Favorite -> POST/DELETE /articles/{slug}/favorite. */}
-      <button
-        type="button"
-        className={`btn btn-sm ${article.favorited ? "btn-primary" : "btn-outline-primary"}`}
-      >
-        <i className="ion-heart" />
-        &nbsp; Favorite Post <span className="counter">({article.favoritesCount})</span>
-      </button>
+      <FavoriteButton slug={article.slug} favorited={article.favorited} favoritesCount={article.favoritesCount} />
     </div>
   );
 }

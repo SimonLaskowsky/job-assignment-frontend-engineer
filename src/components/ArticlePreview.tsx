@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 
 import AuthorImage from "./AuthorImage";
+import FavoriteButton from "./FavoriteButton";
 import type { Article } from "../types/api";
 
 interface ArticlePreviewProps {
@@ -27,14 +28,12 @@ export default function ArticlePreview({ article }: ArticlePreviewProps) {
           {/* Data jako string ISO z API -> dayjs formatuje do czytelnej postaci. */}
           <span className="date">{dayjs(article.createdAt).format("MMMM D, YYYY")}</span>
         </div>
-        {/* Przycisk ulubionych: klasa zależy od tego, czy artykuł jest już polubiony.
-            TODO (Etap 5): podpiąć onClick -> POST/DELETE /articles/{slug}/favorite. */}
-        <button
-          type="button"
-          className={`btn btn-sm pull-xs-right ${article.favorited ? "btn-primary" : "btn-outline-primary"}`}
-        >
-          <i className="ion-heart" /> {article.favoritesCount}
-        </button>
+        <FavoriteButton
+          slug={article.slug}
+          favorited={article.favorited}
+          favoritesCount={article.favoritesCount}
+          compact
+        />
       </div>
       <Link to={`/article/${article.slug}`} className="preview-link">
         <h1>{article.title}</h1>
