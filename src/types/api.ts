@@ -75,6 +75,16 @@ export interface UserResponse {
   user: User;
 }
 
+/**
+ * Odpowiedź listy artykułów (GET /articles, GET /articles/feed).
+ * `articlesCount` to łączna liczba w bazie (przyda się przy paginacji),
+ * niezależna od długości zwróconej tablicy `articles`.
+ */
+export interface MultipleArticlesResponse {
+  articles: Article[];
+  articlesCount: number;
+}
+
 /** Body żądania logowania: POST /users/login oczekuje { user: { email, password } }. */
 export interface LoginUserRequest {
   user: {

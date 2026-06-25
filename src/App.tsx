@@ -3,7 +3,7 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-import ArticleList from "./ArticleList";
+import Home from "./pages/Home";
 import Article from "./Article";
 import Profile from "./Profile";
 import Login from "./pages/Login";
@@ -16,7 +16,7 @@ function App() {
       <Navbar />
       <Switch>
         {/* `exact` na "/", żeby strona główna nie "łapała" wszystkich innych ścieżek. */}
-        <Route path="/" exact component={ArticleList} />
+        <Route path="/" exact component={Home} />
         <Route path="/article/:slug" exact component={Article} />
         <Route path="/profile/:username" exact component={Profile} />
         <Route path="/login" exact component={Login} />
