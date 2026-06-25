@@ -4,8 +4,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
-import Article from "./Article";
-import Profile from "./Profile";
+import Article from "./pages/Article";
+import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 
 function App() {

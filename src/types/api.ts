@@ -85,6 +85,16 @@ export interface MultipleArticlesResponse {
   articlesCount: number;
 }
 
+/** Odpowiedź pojedynczego artykułu (GET /articles/{slug}) — opakowany `Article`. */
+export interface SingleArticleResponse {
+  article: Article;
+}
+
+/** Odpowiedź profilu (GET /profiles/{username}) — opakowany `Profile`. */
+export interface ProfileResponse {
+  profile: Profile;
+}
+
 /** Body żądania logowania: POST /users/login oczekuje { user: { email, password } }. */
 export interface LoginUserRequest {
   user: {
