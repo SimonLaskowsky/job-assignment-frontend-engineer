@@ -18,7 +18,9 @@ import type { GenericErrorModel } from "../types/api";
 function extractErrorMessages(error: unknown): string[] {
   if (axios.isAxiosError(error)) {
     // 422: API zwraca { errors: { body: ["..."] } } — pokazujemy te komunikaty wprost.
-    const data = error.response?.data as GenericErrorModel | undefined;
+    // Adnotacja typu zamiast asercji `as`: axios typuje `data` jako any, więc cast jest zbędny.
+    // (Przy okazji omijamy buga parsera Babel na składni `?.x as T` w starszym @babel/parser.)
+    const data: GenericErrorModel | undefined = error.response?.data;
     if (data?.errors?.body?.length) {
       return data.errors.body;
     }

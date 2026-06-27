@@ -9,5 +9,5 @@
 !.env
 !nginx.conf
 !package.json
-!package-lock.json
+!yarn.lock
 !tsconfig.json
